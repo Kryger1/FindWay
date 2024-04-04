@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+	<meta charset="utf-8">
+	
+	<title>FindWay</title>
+	
+	<meta name="robots" content="All">
+	<meta name="author" content="Udgiver">
+	<meta name="copyright" content="Information om copyright">
+	<link href="css/styles.css" rel="stylesheet" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="JS.js"></script>
+	<link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+<header class="elegant-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center">
+				<a href="index.html">
+					<img src="img/log.png" alt="Findway" class="header-logo">
+				</a>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+	<div class="d-grid gap-2 col-6 mx-auto">
+		<br>
+		<a href="vand.html" class="btn btn-primary btn-img">
+			La Torre del Agua
+		</a>
+		<br>
+		<a href="skib.html" class="btn btn-primary btn-img">
+			El Barco del Vino
+		</a>
+		<br>
+		<a href="porten.html" class="btn btn-primary btn-img">
+			La Puerta del Castillo
+		</a>
+		<br>
+		<a href="fars%20hat.html" class="btn btn-primary btn-img">
+			La Torre Sombrero del Padre
+		</a>
+		<br>
+		<a href="staldgården.html" class="btn btn-primary btn-img">
+			El Patio del Establo
+		</a>
+		<br>
+		<a href="finnermann.html" class="btn btn-primary btn-img">
+			galería Finnermann
+		</a>
+		<br>
+		<a href="torvet.html" class="btn btn-primary btn-img">
+			La Plaza
+		</a>
+	</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const buttons = document.querySelectorAll('.btn-img');
+
+		// Funktion for at forstørre knappen ved mouseenter eller touchstart
+		function onHoverOrTouchStart(event) {
+			const btn = event.target.closest('.btn-img');
+			btn.style.transform = 'scale(1.1)';
+			btn.style.transition = 'transform 0.2s ease';
+		}
+
+		// Funktion for at nulstille knappens størrelse ved mouseleave eller efter touch
+		function onLeaveOrTouchEnd(event) {
+			const btn = event.target.closest('.btn-img');
+			btn.style.transform = 'scale(1)';
+		}
+
+		// Funktion for at skifte farve til rød ved klik
+		function onClick(event) {
+			const btn = event.target.closest('.btn-img');
+			btn.style.backgroundColor = '#5D1049';
+			btn.style.color = 'white';
+		}
+
+		buttons.forEach(button => {
+			// Mus-interaktioner
+			button.addEventListener('mouseenter', onHoverOrTouchStart);
+			button.addEventListener('mouseleave', onLeaveOrTouchEnd);
+
+			// Touch-interaktioner
+			button.addEventListener('touchstart', onHoverOrTouchStart);
+			button.addEventListener('touchend', onLeaveOrTouchEnd);
+
+			// Klik-interaktion
+			button.addEventListener('click', onClick);
+		});
+	});
+</script>
+
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

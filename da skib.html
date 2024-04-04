@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="utf-8">
+
+    <title>FindWay</title>
+
+    <meta name="robots" content="All">
+    <meta name="author" content="Udgiver">
+    <meta name="copyright" content="Information om copyright">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="JS.js"></script>
+    <link rel="stylesheet" href="css.css">
+
+</head>
+<body>
+
+<header class="elegant-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="index.html">
+                    <img src="img/log.png" alt="Findway" class="header-logo">
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+<br>
+<div class="image-container text-center">
+    <img src="img/båd.jpg" class="img-fluid" alt="Beskrivende tekst">
+</div>
+
+<div class="container">
+    <div id="vandtaarn-header">
+        <h1 class="text-center mt-3">Marittima</h1>
+    </div>
+    <div class="header d-flex align-items-center">
+        <div class="vandtaarn-text">
+            <button id="speakButton">Leer en voz alta en español</button>
+            <p id="textToRead">Marittima
+                <br><br>
+                Konstruktion og tidlig brug:
+
+                "Marittima" blev bygget i 1958 på Husumer Werft-værftet til at transportere biler og passagerer til Helgoland.
+                <br><br>
+                Specifikationer:
+                <br><br>
+                Senere brug:
+
+                Senere blev skibet købt af et spansk rederi til krydstogter rundt om Tenerife og Gran Canaria. Ruterne blev udvidet til Middelhavet, herunder Mallorca.
+                <br><br>
+                Renovering og navneændring i 1993:
+
+                I 1993 erhvervede Rederei Bötcher skibet, gennemførte en større renovering og omdøbte det til "Marittima".
+                <br><br>
+                Nyt liv:
+
+                Efter at have fungeret som en "smørskude" til Danmark blev den omdannet til en fest- og turistbåd på kanalerne Trave omkring Lübeck og Østersøen.
+                <br><br>
+                Aktuel funktion:
+
+                Nu er "Marittima" placeret på Sandgade i den nordlige havn i Nykøbing F, hvor den fungerer som vinbar og café.
+                <br><br>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<br>
+<br>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <a href="index.html">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d706.1873439970728!2d11.86230460542347!3d54.77076209390808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ad314a68774c8d%3A0xce64c5cad30a4e67!2sVinoteque%20Marittima!5e1!3m2!1sda!2sdk!4v1712053334629!5m2!1sda!2sdk" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // JavaScript-koden for oplæsning
+    function toggleReading() {
+        // Tjekker om der er nogen tale i gang
+        if (!window.speechSynthesis.speaking) {
+            // Starter oplæsningen, hvis ingen tale er i gang
+            const text = document.querySelector('#textToRead').innerText;
+            const speech = new SpeechSynthesisUtterance(text);
+            speech.lang = 'da-DK'; // Rettelse til korrekt sprogkode for dansk
+            window.speechSynthesis.speak(speech);
+            document.querySelector('#speakButton').textContent = 'Stop';
+        } else {
+            // Stopper oplæsningen, hvis den er i gang
+            window.speechSynthesis.cancel();
+            document.querySelector('#speakButton').textContent = 'Læs højt på dansk';
+        }
+    }
+
+    // Tilføjer event listeners når DOM'en er fuldt indlæst
+    document.addEventListener('DOMContentLoaded', function () {
+        const speakButton = document.querySelector('#speakButton');
+        speakButton.addEventListener('click', toggleReading);
+        // Sætter knappens starttekst baseret på om der allerede er en oplæsning i gang
+        speakButton.textContent = window.speechSynthesis.speaking ? 'Stop' : 'Læs højt på dansk';
+        styleButton(); // Anvender stilændringer
+    });
+
+    // Stopper oplæsningen automatisk, når siden forlades eller opdateres
+    window.addEventListener('beforeunload', function () {
+        if (window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel();
+        }
+    });
+
+    function styleButton() {
+        const button = document.querySelector('#speakButton');
+        button.style.backgroundColor = 'red';
+        button.style.color = 'white';
+        button.style.fontSize = '13px';
+        button.style.padding = '10px 20px';
+    }
+</script>
+
+
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

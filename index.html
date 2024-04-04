@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+	<meta charset="utf-8">
+	
+	<title>FindWay</title>
+	
+	<meta name="robots" content="All">
+	<meta name="author" content="Udgiver">
+	<meta name="copyright" content="Information om copyright">
+	<link href="css/styles.css" rel="stylesheet" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="JS.js"></script>
+	<link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+<header class="elegant-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center">
+				<a href="index.html">
+					<img src="img/log.png" alt="Findway" class="header-logo">
+				</a>
+			</div>
+		</div>
+	</div>
+</header>
+<br>
+<br>
+<br>
+	<div class="d-grid gap-2 col-6 mx-auto">
+		<a href="dan.html" class="btn btn-primary btn-img">
+			<img src="img/dan.png" class="btn-icon" alt="Danish flag">
+			<span>Danish</span>
+		</a>
+		<a href="eng.html" class="btn btn-primary btn-img">
+			<img src="img/eng.png" class="btn-icon" alt="English flag">
+			<span>English</span>
+		</a>
+		<a href="by/fran.html" class="btn btn-primary btn-img">
+			<img src="img/fran.png" class="btn-icon" alt="French flag">
+			<span>French</span>
+		</a>
+		<a href="span.html" class="btn btn-primary btn-img">
+			<img src="img/spai.png" class="btn-icon" alt="Spanish flag">
+			<span>Spanish</span>
+		</a>
+		<a href="by/tyk.html" class="btn btn-primary btn-img">
+			<img src="img/germ.png" class="btn-icon" alt="German flag">
+			<span>German</span>
+		</a>
+	</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const buttons = document.querySelectorAll('.btn-img');
+
+		// Funktion for at forstørre knappen ved mouseenter eller touchstart
+		function onHoverOrTouchStart(event) {
+			const btn = event.target.closest('.btn-img');
+			btn.style.transform = 'scale(1.1)';
+			btn.style.transition = 'transform 0.2s ease';
+		}
+
+		// Funktion for at nulstille knappens størrelse ved mouseleave eller efter touch
+		function onLeaveOrTouchEnd(event) {
+			const btn = event.target.closest('.btn-img');
+			btn.style.transform = 'scale(1)';
+		}
+
+		// Funktion for at skifte farve til rød ved klik
+		function onClick(event) {
+			const btn = event.target.closest('.btn-img');
+			btn.style.backgroundColor = '#5D1049';
+			btn.style.color = 'white';
+		}
+
+		buttons.forEach(button => {
+			// Mus-interaktioner
+			button.addEventListener('mouseenter', onHoverOrTouchStart);
+			button.addEventListener('mouseleave', onLeaveOrTouchEnd);
+
+			// Touch-interaktioner
+			button.addEventListener('touchstart', onHoverOrTouchStart);
+			button.addEventListener('touchend', onLeaveOrTouchEnd);
+
+			// Klik-interaktion
+			button.addEventListener('click', onClick);
+		});
+	});
+</script>
+
+
+
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

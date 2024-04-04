@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="utf-8">
+
+    <title>FindWay</title>
+
+    <meta name="robots" content="All">
+    <meta name="author" content="Udgiver">
+    <meta name="copyright" content="Information om copyright">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="JS.js"></script>
+    <link rel="stylesheet" href="css.css">
+
+</head>
+<body>
+
+<header class="elegant-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="index.html">
+                    <img src="img/log.png" alt="Findway" class="header-logo">
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+<br>
+<div class="image-container text-center">
+    <img src="img/stald.jpeg" class="img-fluid" alt="Beskrivende tekst">
+</div>
+
+<div class="container">
+    <div id="vandtaarn-header">
+        <h1 class="text-center mt-3">Staldbygning</h1>
+  </div>
+    <div class="header d-flex align-items-center">
+        <div class="vandtaarn-text">
+            <button id="speakButton">Leer en voz alta en español</button>
+            <p id="textToRead">Staldbygning
+                <br><br>
+                Nykøbing Slot, oprindeligt en middelalderborg, blev genopbygget som et renæssanceslot i 1594. Det fungerede som residens for Dronning Sophie indtil hendes død i 1631.
+                <br><br>
+                Efterfølgende faldt slottet i forladthed og blev solgt til nedrivning i 1767. I dag står kun staldbygningen tilbage, opført i 1635 og tilskrevet bygmesteren Hans van Steenwinckel den Yngre.
+                <br><br>
+                Under Prins Christian's ophold blev der foretaget tilføjelser til kongens heste, med spor af foderkrybber stadig bevaret. Oprindeligt med en længde på 86 alen (54 meter) blev staldbygningen forkortet efter en brand i midten af det 19. århundrede. Siden da er den blevet brugt til forskellige formål, herunder som bilværksted i 1992.
+                <br><br>
+                Den kulturelle og historiske værdi af staldbygningen ligger i dens status som den eneste tilbageværende struktur fra Nykøbing Falster renæssanceslot.
+                <br><br>
+                Den dybe bygningskrop med en base af hvid murværk, rødt og gult vekslende murværk, og distinkte stenbuer i åbningerne afspejler den simple og robuste byggekultur fra byggeperioden.
+                <br><br>
+                Trods ændringer, herunder forkortelse og tilføjelse af bindingsværk, bevarer den stadig sin karakter og historiske værdi.</p>
+        </div>
+    </div>
+</div>
+
+
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <a href="index.html">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d1051.8980769837585!2d11.866452718165396!3d54.7704734882374!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ad30f8e7761ccf%3A0x8edca25904a925ff!2sStaldgaarden%2C%204800%20Nyk%C3%B8bing%20Falster!5e1!3m2!1sda!2sdk!4v1712055780730!5m2!1sda!2sdk" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // JavaScript-koden for oplæsning
+    function toggleReading() {
+        // Tjekker om der er nogen tale i gang
+        if (!window.speechSynthesis.speaking) {
+            // Starter oplæsningen, hvis ingen tale er i gang
+            const text = document.querySelector('#textToRead').innerText;
+            const speech = new SpeechSynthesisUtterance(text);
+            speech.lang = 'da-DK'; // Rettelse til korrekt sprogkode for dansk
+            window.speechSynthesis.speak(speech);
+            document.querySelector('#speakButton').textContent = 'Stop';
+        } else {
+            // Stopper oplæsningen, hvis den er i gang
+            window.speechSynthesis.cancel();
+            document.querySelector('#speakButton').textContent = 'Læs højt på dansk';
+        }
+    }
+
+    // Tilføjer event listeners når DOM'en er fuldt indlæst
+    document.addEventListener('DOMContentLoaded', function () {
+        const speakButton = document.querySelector('#speakButton');
+        speakButton.addEventListener('click', toggleReading);
+        // Sætter knappens starttekst baseret på om der allerede er en oplæsning i gang
+        speakButton.textContent = window.speechSynthesis.speaking ? 'Stop' : 'Læs højt på dansk';
+        styleButton(); // Anvender stilændringer
+    });
+
+    // Stopper oplæsningen automatisk, når siden forlades eller opdateres
+    window.addEventListener('beforeunload', function () {
+        if (window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel();
+        }
+    });
+
+    function styleButton() {
+        const button = document.querySelector('#speakButton');
+        button.style.backgroundColor = 'red';
+        button.style.color = 'white';
+        button.style.fontSize = '13px';
+        button.style.padding = '10px 20px';
+    }
+</script>
+
+
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

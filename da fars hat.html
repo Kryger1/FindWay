@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="utf-8">
+
+    <title>FindWay</title>
+
+    <meta name="robots" content="All">
+    <meta name="author" content="Udgiver">
+    <meta name="copyright" content="Information om copyright">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="JS.js"></script>
+    <link rel="stylesheet" href="css.css">
+
+</head>
+<body>
+
+<header class="elegant-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="index.html">
+                    <img src="img/log.png" alt="Findway" class="header-logo">
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+<br>
+<div class="image-container text-center">
+    <img src="img/fars.jpeg" class="img-fluid" alt="Beskrivende tekst">
+</div>
+
+<div class="container">
+    <div id="vandtaarn-header">
+        <h1 class="text-center mt-3">Fars hat</h1>
+    </div>
+    <div class="header d-flex align-items-center">
+        <div class="vandtaarn-text">
+            <button id="speakButton">Læs op</button>
+            <p id="textToRead">Fars hat
+            <br><br>
+            En middelalderlig ruin:
+
+            På Slotsbryggen i Nykøbing F finder man en lille ruin, det eneste synlige spor efter en reel middelalderborg med cirkulære mure. Ruinen, kendt som resterne af en af borgens tårne, bærer navnet Faderens Hat.
+            <br><br>
+            Første historiske omtale:
+
+            Borgens første omtale findes i skriftlige kilder fra 1250'erne, hvor den blev erobret, og byen blev brændt ned af lübeckenserne.
+            <br><br>
+            Renæssancetransformation:
+
+            Ved slutningen af det 16. århundrede blev den middelalderlige borg ombygget til den renæssanceborg, Nykøbing Slot. Dette slot stod i cirka 200 år, indtil det i 1767 blev solgt til nedrivning.
+            <br><br>
+            Borgens struktur:
+
+            Ud fra gamle kort og beskrivelser ved man, at borgens cirkulære mure havde tårne og adskillige bygninger placeret inde og langs murene og var omgivet af en nu opfyldt voldgrav.
+            <br><br>
+        </p>
+    </div>
+</div>
+</div>
+
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <a href="index.html">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1296.3049153262123!2d11.865981162690192!3d54.77175669106193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ad30fed302eeb3%3A0xd46a06f73e1a2282!2sNyk%C3%B8bing%20F.%20Slotsruin!5e1!3m2!1sda!2sdk!4v1712050750953!5m2!1sda!2sdk" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+    // JavaScript-koden for oplæsning
+    function toggleReading() {
+        // Tjekker om der er nogen tale i gang
+        if (!window.speechSynthesis.speaking) {
+            // Starter oplæsningen, hvis ingen tale er i gang
+            const text = document.querySelector('#textToRead').innerText;
+            const speech = new SpeechSynthesisUtterance(text);
+            speech.lang = 'da-DK'; // Rettelse til korrekt sprogkode for dansk
+            window.speechSynthesis.speak(speech);
+            document.querySelector('#speakButton').textContent = 'Stop';
+        } else {
+            // Stopper oplæsningen, hvis den er i gang
+            window.speechSynthesis.cancel();
+            document.querySelector('#speakButton').textContent = 'Læs højt på dansk';
+        }
+    }
+
+    // Tilføjer event listeners når DOM'en er fuldt indlæst
+    document.addEventListener('DOMContentLoaded', function () {
+        const speakButton = document.querySelector('#speakButton');
+        speakButton.addEventListener('click', toggleReading);
+        // Sætter knappens starttekst baseret på om der allerede er en oplæsning i gang
+        speakButton.textContent = window.speechSynthesis.speaking ? 'Stop' : 'Læs højt på dansk';
+        styleButton(); // Anvender stilændringer
+    });
+
+    // Stopper oplæsningen automatisk, når siden forlades eller opdateres
+    window.addEventListener('beforeunload', function () {
+        if (window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel();
+        }
+    });
+
+    function styleButton() {
+        const button = document.querySelector('#speakButton');
+        button.style.backgroundColor = 'red';
+        button.style.color = 'white';
+        button.style.fontSize = '10px';
+        button.style.padding = '10px 20px';
+    }
+</script>
+
+
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

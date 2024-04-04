@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+	<meta charset="utf-8">
+
+	<title>FindWay</title>
+
+	<meta name="robots" content="All">
+	<meta name="author" content="Udgiver">
+	<meta name="copyright" content="Information om copyright">
+	<link href="css/styles.css" rel="stylesheet" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="JS.js"></script>
+	<link rel="stylesheet" href="css.css">
+</head>
+<body>
+<header class="elegant-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center">
+				<a href="index.html">
+					<img src="img/log.png" alt="Findway" class="header-logo">
+				</a>
+			</div>
+		</div>
+	</div>
+</header>
+
+<script>
+	// Vent til dokumentet er fuldt indlæst
+	document.addEventListener('DOMContentLoaded', function() {
+		const header = document.querySelector('.elegant-header'); // Vælg headeren ved hjælp af dens klasse
+
+		window.addEventListener('scroll', function() {
+			// Beregn scroll-procentdelen
+			const scrollPercent = Math.min(100, (window.scrollY / (document.body.offsetHeight - window.innerHeight)) * 100);
+
+			// Opdater headerens baggrundsfarve baseret på scroll-procentdelen
+			// Her ændrer vi farven fra transparent til en mørkere nuance, afhængigt af scroll-positionen
+			header.style.backgroundColor = `rgba(93, 16, 73, ${scrollPercent / 100})`; // Ændre RGBA's alpha-værdi baseret på scrollPercent
+		});
+	});
+</script>
+
+
+
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

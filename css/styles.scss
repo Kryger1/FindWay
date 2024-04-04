@@ -1,0 +1,58 @@
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "../node_modules/bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+$link-decoration: none;
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+
+// 4. Include any default map overrides here
+$custom-colors: (
+	"farve": $cyan-400,
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "bootstrapComponents";
+
+// 5. Du kan lave styling her...
+
+
+
+
+
+
+.btn-img {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 100%;
+	padding: 1rem; /* Justeret for bedre plads */
+	border: none;
+	text-decoration: none;
+	color: white;
+	text-align: left;
+	height: 48px; /* Standard button height */
+	border-radius: 24px; /* Half the height for full roundness */
+	background-color: #007bff; /* Bootstrap primary color */
+}
+
+
+
+.btn-icon {
+	width: 20px; /* Billede bredde */
+	height: 15px; /* Billede højde */
+	margin-right: 10px; /* Afstand mellem billede og tekst */
+}
+
+/* Tilpas tekststørrelsen */
+.btn-img span {
+	font-size: 16px; /* Eksempel på tekststørrelse */
+}
+
+.vandtaarn-image {
+	width: 300px; /* Juster bredde som ønsket */
+	height: auto; /* Bevarer billedets aspektforhold */
+}

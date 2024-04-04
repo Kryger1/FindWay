@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="utf-8">
+
+    <title>FindWay</title>
+
+    <meta name="robots" content="All">
+    <meta name="author" content="Udgiver">
+    <meta name="copyright" content="Information om copyright">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="JS.js"></script>
+    <link rel="stylesheet" href="css.css">
+
+</head>
+<body>
+
+<header class="elegant-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="index.html">
+                    <img src="img/log.png" alt="Findway" class="header-logo">
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+<br>
+<div class="image-container text-center">
+    <img src="img/finn.jpg" class="img-fluid" alt="Beskrivende tekst">
+</div>
+
+<div class="container">
+    <div id="vandtaarn-header">
+        <h1 class="text-center mt-3">Finnermann</h1>
+    </div>
+    <div class="header d-flex align-items-center">
+        <div class="vandtaarn-text">
+            <button id="speakButton">læs op</button>
+            <p id="textToRead">Finnermann Malerier og malede krukker - født i 1967, Nykøbing F
+                <br><br>
+                Finn Finnermann er en selvlært maler i 20 år, der har arbejdet som fuldtidskunstner siden 2015. Han skaber værker i Cobra-stilen i en helt ny fortolkning, men stadig i spontan, farverig udtryk med kontraster og masser af fantasi og fabelagtige skabninger.
+                <br><br>
+                Fra barnsben var Finnermann fascineret af Cobra-malerne som Asger Jorn, Carl Henning Pedersen og Mogens Balle. Hans mor købte nogle malerituber, og når der ikke var pligter, legede Finn med farver; og det gør han stadig. Med stor glæde og erfaring skaber han nu de farverige værker i sit eget studie på Falster.
+                <br><br>
+                Han siger selv om sine værker: "Jeg elsker gløden, som de rene farver giver et værk, og derfor blander jeg aldrig mine farver". og de rene marker så længe som muligt i malerprocessen, hvor han kun bruger lidt pensel men meget mere spartel og hænder på vejen. Sådan opstår det spontane dynamiske, der gør maleriet eller krukken interessant at se på selv efter flere års beundring.
+                <br><br>
+                Han holder fast i de klare farver
+                <br><br>
+                Hvis du ønsker et voldsomt, iøjnefaldende og farverigt værk med god dynamik, og hvor motivet taler, er Finnermann den rette maler. Forresten kan du altid genkende et værk af Finnermann ved den sorte linje og hans kontur af figurerne.
+
+                <br><br>
+                Finnermann er den rette maler. Forresten kan du altid genkende et værk af Finnermann ved den sorte linje og hans kontur af figurerne.
+                <br><br>
+
+        </div>
+    </div>
+</div>
+
+
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <a href="index.html">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1551.0565481509293!2d11.865615739933391!3d54.76789376606136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ad30f86b456c03%3A0x7c2545d89cab7ba7!2sTorvet%2C%204800%20Nyk%C3%B8bing%20Falster!5e1!3m2!1sda!2sdk!4v1712057156936!5m2!1sda!2sdk" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // JavaScript-koden for oplæsning
+    function toggleReading() {
+        // Tjekker om der er nogen tale i gang
+        if (!window.speechSynthesis.speaking) {
+            // Starter oplæsningen, hvis ingen tale er i gang
+            const text = document.querySelector('#textToRead').innerText;
+            const speech = new SpeechSynthesisUtterance(text);
+            speech.lang = 'da-DK'; // Rettelse til korrekt sprogkode for dansk
+            window.speechSynthesis.speak(speech);
+            document.querySelector('#speakButton').textContent = 'Stop';
+        } else {
+            // Stopper oplæsningen, hvis den er i gang
+            window.speechSynthesis.cancel();
+            document.querySelector('#speakButton').textContent = 'Læs højt på dansk';
+        }
+    }
+
+    // Tilføjer event listeners når DOM'en er fuldt indlæst
+    document.addEventListener('DOMContentLoaded', function () {
+        const speakButton = document.querySelector('#speakButton');
+        speakButton.addEventListener('click', toggleReading);
+        // Sætter knappens starttekst baseret på om der allerede er en oplæsning i gang
+        speakButton.textContent = window.speechSynthesis.speaking ? 'Stop' : 'Læs højt på dansk';
+        styleButton(); // Anvender stilændringer
+    });
+
+    // Stopper oplæsningen automatisk, når siden forlades eller opdateres
+    window.addEventListener('beforeunload', function () {
+        if (window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel();
+        }
+    });
+
+    function styleButton() {
+        const button = document.querySelector('#speakButton');
+        button.style.backgroundColor = 'red';
+        button.style.color = 'white';
+        button.style.fontSize = '13px';
+        button.style.padding = '10px 20px';
+    }
+</script>
+
+
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="utf-8">
+
+    <title>FindWay</title>
+
+    <meta name="robots" content="All">
+    <meta name="author" content="Udgiver">
+    <meta name="copyright" content="Information om copyright">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="JS.js"></script>
+    <link rel="stylesheet" href="css.css">
+
+</head>
+<body>
+
+<header class="elegant-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="index.html">
+                    <img src="img/log.png" alt="Findway" class="header-logo">
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+<br>
+<div class="image-container text-center">
+    <img src="img/stald.jpeg" class="img-fluid" alt="Beskrivende tekst">
+</div>
+
+<div class="container">
+    <div id="vandtaarn-header">
+        <h1 class="text-center mt-3">Edificación de caballerizas</h1>
+    </div>
+    <div class="header d-flex align-items-center">
+        <div class="vandtaarn-text">
+            <button id="speakButton">Leer en voz alta en español</button>
+            <p id="textToRead">Edificación de caballerizas
+                <br><br>
+                Nykøbing Slot, originalmente una fortaleza medieval, fue reconstruido como un castillo renacentista en 1594. Sirvió como residencia para la Reina Sofía hasta su muerte en 1631.
+                <br><br>
+                Después, el castillo cayó en desuso y fue vendido para su demolición en 1767. Hoy en día, solo queda el edificio de establos, construido en 1635 y atribuido al maestro constructor Hans van Steenwinckel el Joven.
+                <br><br>
+                Durante la estancia del Príncipe Christian, se hicieron adiciones para los caballos reales, con rastros de pesebres aún preservados. Originalmente con una longitud de 86 alen (54 metros), el edificio de establos fue acortado después de un incendio a mediados del siglo XIX. Desde entonces, ha sido utilizado para varios propósitos, incluyendo funcionar como taller de pintura de automóviles en 1992.
+                <br><br>
+                El valor cultural e histórico del edificio de establos radica en su estatus como la única estructura restante del castillo renacentista de Nykøbing Falster.
+                <br><br>
+                El cuerpo de construcción profundo con una base de mampostería en blanco, albañilería roja y amarilla alternada,
+                <br><br>
+                y arcos de piedra distintivos en las aberturas reflejan la cultura de construcción simple y robusta del período de construcción.
+                <br><br>
+                A pesar de las alteraciones, incluyendo el acortamiento y la adición de entramado de madera, aún conserva su carácter y valor histórico.</p>
+        </div>
+    </div>
+</div>
+
+
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <a href="index.html">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d1051.8980769837585!2d11.866452718165396!3d54.7704734882374!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ad30f8e7761ccf%3A0x8edca25904a925ff!2sStaldgaarden%2C%204800%20Nyk%C3%B8bing%20Falster!5e1!3m2!1sda!2sdk!4v1712055780730!5m2!1sda!2sdk" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // JavaScript-koden for oplæsning
+    function toggleReading() {
+        // Tjekker om der er nogen tale i gang
+        if (!window.speechSynthesis.speaking) {
+            // Starter oplæsningen, hvis ingen tale er i gang
+            const text = document.querySelector('#textToRead').innerText;
+            const speech = new SpeechSynthesisUtterance(text);
+            speech.lang = 'es-ES';
+            window.speechSynthesis.speak(speech);
+            document.querySelector('#speakButton').textContent = 'Detener';
+        } else {
+            window.speechSynthesis.cancel();
+            document.querySelector('#speakButton').textContent = 'Leer en voz alta en español';
+        }
+    }
+
+    // Tilføjer event listeners når DOM'en er fuldt indlæst
+    document.addEventListener('DOMContentLoaded', function () {
+        const speakButton = document.querySelector('#speakButton');
+        speakButton.addEventListener('click', toggleReading);
+        speakButton.textContent = window.speechSynthesis.speaking ? 'Detener' : 'Leer en voz alta en español';
+        styleButton(); // Anvender stilændringer
+    });
+
+    // Stopper oplæsningen automatisk, når siden forlades eller opdateres
+    window.addEventListener('beforeunload', function () {
+        if (window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel();
+        }
+    });
+
+    function styleButton() {
+        const button = document.querySelector('#speakButton');
+        button.style.backgroundColor = 'red';
+        button.style.color = 'white';
+        button.style.fontSize = '13px'; // Justeret fra 10px til 20px for bedre læsbarhed
+        button.style.padding = '10px 20px';
+    }
+</script>
+
+
+
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

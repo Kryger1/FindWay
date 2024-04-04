@@ -1,0 +1,27 @@
+
+
+.header-logo {
+    max-width: 150px;
+    height: auto;
+}
+
+.elegant-header {
+    background-color: #5D1049;
+    padding: 20px 0;
+    color: #FFFFFF;
+}
+
+.container {
+    max-width: 1140px;
+    margin: auto;
+    padding: 0 15px;
+}
+
+
+
+/* Ensure the design is responsive */
+@media (max-width: 768px) {
+    .header-logo {
+        max-width: 120px; /* Smaller logo for mobile devices */
+    }
+}
